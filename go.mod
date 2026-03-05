@@ -1,4 +1,4 @@
-module microservice-online-shop
+module github.com/cbaluong/Microservice-Online-Shop
 
 go 1.25.6
 
