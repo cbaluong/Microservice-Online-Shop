@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package api;
+option go_package = ".;api";
+
+message Address {
+  string name = 1;
+  string street = 2;
+  string zip = 3;
+  string city = 4;
+  string country = 5;
+}
+
+message ItemLine {
+  string sku = 1;
+  int64 qty = 2;
+}
+
+message Money {
+  int64 amount_cents = 1;
+  string currency = 2; // "EUR"
+}
+
+message OrderIdEvent {
+  string order_id = 1;
+}

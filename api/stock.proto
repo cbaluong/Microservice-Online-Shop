@@ -1,0 +1,51 @@
+syntax = "proto3";
+
+package api;
+option go_package = ".;api";
+
+import "common.proto";
+
+message Product {
+  string sku = 1;
+  string name = 2;
+  string description = 3;
+  int64 price_cents = 4;
+  string currency = 5;
+}
+
+message StockItem {
+  string sku = 1;
+  int64 available_qty = 2;
+  int64 reserved_qty = 3;
+  int64 updated_at_unix = 4;
+}
+
+enum ReservationStatus {
+  RESERVATION_STATUS_UNSPECIFIED = 0;
+  RESERVATION_STATUS_OK = 1;
+  RESERVATION_STATUS_PARTIAL = 2;
+  RESERVATION_STATUS_FAILED = 3;
+}
+
+message ReserveItemsRequest {
+  string order_id = 1;
+  repeated ItemLine lines = 2;
+}
+
+message ReserveItemsReply {
+  ReservationStatus status = 1;
+  repeated ItemLine reserved = 2;
+  repeated ItemLine missing = 3;
+}
+
+message ReleaseReservationRequest { string order_id = 1; }
+message ReleaseReservationReply { bool released = 1; }
+
+message GetStockRequest { string sku = 1; }
+message GetStockReply { StockItem stock = 1; Product product = 2; }
+
+service StockService {
+  rpc ReserveItems(ReserveItemsRequest) returns (ReserveItemsReply);
+  rpc ReleaseReservation(ReleaseReservationRequest) returns (ReleaseReservationReply);
+  rpc GetStock(GetStockRequest) returns (GetStockReply);
+}

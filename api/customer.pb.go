@@ -21,82 +21,6 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-type Address struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Name          string                 `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
-	Street        string                 `protobuf:"bytes,2,opt,name=street,proto3" json:"street,omitempty"`
-	Zip           string                 `protobuf:"bytes,3,opt,name=zip,proto3" json:"zip,omitempty"`
-	City          string                 `protobuf:"bytes,4,opt,name=city,proto3" json:"city,omitempty"`
-	Country       string                 `protobuf:"bytes,5,opt,name=country,proto3" json:"country,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *Address) Reset() {
-	*x = Address{}
-	mi := &file_customer_proto_msgTypes[0]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *Address) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*Address) ProtoMessage() {}
-
-func (x *Address) ProtoReflect() protoreflect.Message {
-	mi := &file_customer_proto_msgTypes[0]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use Address.ProtoReflect.Descriptor instead.
-func (*Address) Descriptor() ([]byte, []int) {
-	return file_customer_proto_rawDescGZIP(), []int{0}
-}
-
-func (x *Address) GetName() string {
-	if x != nil {
-		return x.Name
-	}
-	return ""
-}
-
-func (x *Address) GetStreet() string {
-	if x != nil {
-		return x.Street
-	}
-	return ""
-}
-
-func (x *Address) GetZip() string {
-	if x != nil {
-		return x.Zip
-	}
-	return ""
-}
-
-func (x *Address) GetCity() string {
-	if x != nil {
-		return x.City
-	}
-	return ""
-}
-
-func (x *Address) GetCountry() string {
-	if x != nil {
-		return x.Country
-	}
-	return ""
-}
-
 type Customer struct {
 	state          protoimpl.MessageState `protogen:"open.v1"`
 	Id             string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
@@ -105,13 +29,14 @@ type Customer struct {
 	LastName       string                 `protobuf:"bytes,4,opt,name=last_name,json=lastName,proto3" json:"last_name,omitempty"`
 	DefaultAddress *Address               `protobuf:"bytes,5,opt,name=default_address,json=defaultAddress,proto3" json:"default_address,omitempty"`
 	CreatedAtUnix  int64                  `protobuf:"varint,6,opt,name=created_at_unix,json=createdAtUnix,proto3" json:"created_at_unix,omitempty"`
+	UpdatedAtUnix  int64                  `protobuf:"varint,7,opt,name=updated_at_unix,json=updatedAtUnix,proto3" json:"updated_at_unix,omitempty"`
 	unknownFields  protoimpl.UnknownFields
 	sizeCache      protoimpl.SizeCache
 }
 
 func (x *Customer) Reset() {
 	*x = Customer{}
-	mi := &file_customer_proto_msgTypes[1]
+	mi := &file_customer_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -123,7 +48,7 @@ func (x *Customer) String() string {
 func (*Customer) ProtoMessage() {}
 
 func (x *Customer) ProtoReflect() protoreflect.Message {
-	mi := &file_customer_proto_msgTypes[1]
+	mi := &file_customer_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -136,7 +61,7 @@ func (x *Customer) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Customer.ProtoReflect.Descriptor instead.
 func (*Customer) Descriptor() ([]byte, []int) {
-	return file_customer_proto_rawDescGZIP(), []int{1}
+	return file_customer_proto_rawDescGZIP(), []int{0}
 }
 
 func (x *Customer) GetId() string {
@@ -181,6 +106,13 @@ func (x *Customer) GetCreatedAtUnix() int64 {
 	return 0
 }
 
+func (x *Customer) GetUpdatedAtUnix() int64 {
+	if x != nil {
+		return x.UpdatedAtUnix
+	}
+	return 0
+}
+
 type CreateCustomerRequest struct {
 	state          protoimpl.MessageState `protogen:"open.v1"`
 	Email          string                 `protobuf:"bytes,1,opt,name=email,proto3" json:"email,omitempty"`
@@ -193,7 +125,7 @@ type CreateCustomerRequest struct {
 
 func (x *CreateCustomerRequest) Reset() {
 	*x = CreateCustomerRequest{}
-	mi := &file_customer_proto_msgTypes[2]
+	mi := &file_customer_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -205,7 +137,7 @@ func (x *CreateCustomerRequest) String() string {
 func (*CreateCustomerRequest) ProtoMessage() {}
 
 func (x *CreateCustomerRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_customer_proto_msgTypes[2]
+	mi := &file_customer_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -218,7 +150,7 @@ func (x *CreateCustomerRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateCustomerRequest.ProtoReflect.Descriptor instead.
 func (*CreateCustomerRequest) Descriptor() ([]byte, []int) {
-	return file_customer_proto_rawDescGZIP(), []int{2}
+	return file_customer_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *CreateCustomerRequest) GetEmail() string {
@@ -258,7 +190,7 @@ type CreateCustomerReply struct {
 
 func (x *CreateCustomerReply) Reset() {
 	*x = CreateCustomerReply{}
-	mi := &file_customer_proto_msgTypes[3]
+	mi := &file_customer_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -270,7 +202,7 @@ func (x *CreateCustomerReply) String() string {
 func (*CreateCustomerReply) ProtoMessage() {}
 
 func (x *CreateCustomerReply) ProtoReflect() protoreflect.Message {
-	mi := &file_customer_proto_msgTypes[3]
+	mi := &file_customer_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -283,7 +215,7 @@ func (x *CreateCustomerReply) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateCustomerReply.ProtoReflect.Descriptor instead.
 func (*CreateCustomerReply) Descriptor() ([]byte, []int) {
-	return file_customer_proto_rawDescGZIP(), []int{3}
+	return file_customer_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *CreateCustomerReply) GetCustomer() *Customer {
@@ -302,7 +234,7 @@ type GetCustomerRequest struct {
 
 func (x *GetCustomerRequest) Reset() {
 	*x = GetCustomerRequest{}
-	mi := &file_customer_proto_msgTypes[4]
+	mi := &file_customer_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -314,7 +246,7 @@ func (x *GetCustomerRequest) String() string {
 func (*GetCustomerRequest) ProtoMessage() {}
 
 func (x *GetCustomerRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_customer_proto_msgTypes[4]
+	mi := &file_customer_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -327,7 +259,7 @@ func (x *GetCustomerRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetCustomerRequest.ProtoReflect.Descriptor instead.
 func (*GetCustomerRequest) Descriptor() ([]byte, []int) {
-	return file_customer_proto_rawDescGZIP(), []int{4}
+	return file_customer_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *GetCustomerRequest) GetId() string {
@@ -346,7 +278,7 @@ type GetCustomerReply struct {
 
 func (x *GetCustomerReply) Reset() {
 	*x = GetCustomerReply{}
-	mi := &file_customer_proto_msgTypes[5]
+	mi := &file_customer_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -358,7 +290,7 @@ func (x *GetCustomerReply) String() string {
 func (*GetCustomerReply) ProtoMessage() {}
 
 func (x *GetCustomerReply) ProtoReflect() protoreflect.Message {
-	mi := &file_customer_proto_msgTypes[5]
+	mi := &file_customer_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -371,7 +303,7 @@ func (x *GetCustomerReply) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetCustomerReply.ProtoReflect.Descriptor instead.
 func (*GetCustomerReply) Descriptor() ([]byte, []int) {
-	return file_customer_proto_rawDescGZIP(), []int{5}
+	return file_customer_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *GetCustomerReply) GetCustomer() *Customer {
@@ -385,13 +317,7 @@ var File_customer_proto protoreflect.FileDescriptor
 
 const file_customer_proto_rawDesc = "" +
 	"\n" +
-	"\x0ecustomer.proto\x12\x03api\"u\n" +
-	"\aAddress\x12\x12\n" +
-	"\x04name\x18\x01 \x01(\tR\x04name\x12\x16\n" +
-	"\x06street\x18\x02 \x01(\tR\x06street\x12\x10\n" +
-	"\x03zip\x18\x03 \x01(\tR\x03zip\x12\x12\n" +
-	"\x04city\x18\x04 \x01(\tR\x04city\x12\x18\n" +
-	"\acountry\x18\x05 \x01(\tR\acountry\"\xcb\x01\n" +
+	"\x0ecustomer.proto\x12\x03api\x1a\fcommon.proto\"\xf3\x01\n" +
 	"\bCustomer\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x14\n" +
 	"\x05email\x18\x02 \x01(\tR\x05email\x12\x1d\n" +
@@ -399,7 +325,8 @@ const file_customer_proto_rawDesc = "" +
 	"first_name\x18\x03 \x01(\tR\tfirstName\x12\x1b\n" +
 	"\tlast_name\x18\x04 \x01(\tR\blastName\x125\n" +
 	"\x0fdefault_address\x18\x05 \x01(\v2\f.api.AddressR\x0edefaultAddress\x12&\n" +
-	"\x0fcreated_at_unix\x18\x06 \x01(\x03R\rcreatedAtUnix\"\xa0\x01\n" +
+	"\x0fcreated_at_unix\x18\x06 \x01(\x03R\rcreatedAtUnix\x12&\n" +
+	"\x0fupdated_at_unix\x18\a \x01(\x03R\rupdatedAtUnix\"\xa0\x01\n" +
 	"\x15CreateCustomerRequest\x12\x14\n" +
 	"\x05email\x18\x01 \x01(\tR\x05email\x12\x1d\n" +
 	"\n" +
@@ -428,24 +355,24 @@ func file_customer_proto_rawDescGZIP() []byte {
 	return file_customer_proto_rawDescData
 }
 
-var file_customer_proto_msgTypes = make([]protoimpl.MessageInfo, 6)
+var file_customer_proto_msgTypes = make([]protoimpl.MessageInfo, 5)
 var file_customer_proto_goTypes = []any{
-	(*Address)(nil),               // 0: api.Address
-	(*Customer)(nil),              // 1: api.Customer
-	(*CreateCustomerRequest)(nil), // 2: api.CreateCustomerRequest
-	(*CreateCustomerReply)(nil),   // 3: api.CreateCustomerReply
-	(*GetCustomerRequest)(nil),    // 4: api.GetCustomerRequest
-	(*GetCustomerReply)(nil),      // 5: api.GetCustomerReply
+	(*Customer)(nil),              // 0: api.Customer
+	(*CreateCustomerRequest)(nil), // 1: api.CreateCustomerRequest
+	(*CreateCustomerReply)(nil),   // 2: api.CreateCustomerReply
+	(*GetCustomerRequest)(nil),    // 3: api.GetCustomerRequest
+	(*GetCustomerReply)(nil),      // 4: api.GetCustomerReply
+	(*Address)(nil),               // 5: api.Address
 }
 var file_customer_proto_depIdxs = []int32{
-	0, // 0: api.Customer.default_address:type_name -> api.Address
-	0, // 1: api.CreateCustomerRequest.default_address:type_name -> api.Address
-	1, // 2: api.CreateCustomerReply.customer:type_name -> api.Customer
-	1, // 3: api.GetCustomerReply.customer:type_name -> api.Customer
-	2, // 4: api.CustomerService.CreateCustomer:input_type -> api.CreateCustomerRequest
-	4, // 5: api.CustomerService.GetCustomer:input_type -> api.GetCustomerRequest
-	3, // 6: api.CustomerService.CreateCustomer:output_type -> api.CreateCustomerReply
-	5, // 7: api.CustomerService.GetCustomer:output_type -> api.GetCustomerReply
+	5, // 0: api.Customer.default_address:type_name -> api.Address
+	5, // 1: api.CreateCustomerRequest.default_address:type_name -> api.Address
+	0, // 2: api.CreateCustomerReply.customer:type_name -> api.Customer
+	0, // 3: api.GetCustomerReply.customer:type_name -> api.Customer
+	1, // 4: api.CustomerService.CreateCustomer:input_type -> api.CreateCustomerRequest
+	3, // 5: api.CustomerService.GetCustomer:input_type -> api.GetCustomerRequest
+	2, // 6: api.CustomerService.CreateCustomer:output_type -> api.CreateCustomerReply
+	4, // 7: api.CustomerService.GetCustomer:output_type -> api.GetCustomerReply
 	6, // [6:8] is the sub-list for method output_type
 	4, // [4:6] is the sub-list for method input_type
 	4, // [4:4] is the sub-list for extension type_name
@@ -458,13 +385,14 @@ func file_customer_proto_init() {
 	if File_customer_proto != nil {
 		return
 	}
+	file_common_proto_init()
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_customer_proto_rawDesc), len(file_customer_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   6,
+			NumMessages:   5,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

@@ -47,14 +47,17 @@ func (s *server) CreateCustomer(ctx context.Context, req *api.CreateCustomerRequ
 		return &api.CreateCustomerReply{Customer: s.store.byID[existingID]}, nil
 	}
 
+	now := time.Now().Unix()
 	id := uuid.NewString()
+
 	c := &api.Customer{
-		Id:            id,
-		Email:         req.GetEmail(),
-		FirstName:     req.GetFirstName(),
-		LastName:      req.GetLastName(),
+		Id:             id,
+		Email:          req.GetEmail(),
+		FirstName:      req.GetFirstName(),
+		LastName:       req.GetLastName(),
 		DefaultAddress: req.GetDefaultAddress(),
-		CreatedAtUnix: time.Now().Unix(),
+		CreatedAtUnix:  now,
+		UpdatedAtUnix:  now,
 	}
 
 	s.store.byID[id] = c

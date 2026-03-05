@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package api;
+option go_package = ".;api";
+
+import "common.proto";
+
+message ReceiveStockRequest {
+  string supplier_name = 1;
+  string reference = 2;
+  repeated ItemLine lines = 3;
+}
+message ReceiveStockReply {
+  bool accepted = 1;
+  int64 received_at_unix = 2;
+}
+
+service SupplierService {
+  rpc ReceiveStock(ReceiveStockRequest) returns (ReceiveStockReply);
+}
